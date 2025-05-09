@@ -6,6 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
+import comentariosRoutes from "../src/comentarios/comentarios.routes.js";
 import { fileURLToPath } from 'url';
 import { dbConnection } from "./mongo.js"; 
 import apiLimiter from "../src/middlewares/rate-limit-validator.js";
@@ -36,6 +37,7 @@ const conectarDB = async () => {
 
 const routes = (app) => {
      app.use("/blog/publicaciones", publicacionesRoutes);
+     app.use("/blog/comentarios", comentariosRoutes);
 };
 
 export const initServer = async () => {

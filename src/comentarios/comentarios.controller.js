@@ -1,42 +1,42 @@
-import { Publicaciones } from './publicaciones.model.js';
+import { Comentarios } from './comentarios.model.js';
 
-export const crearPublicacion = async (req, res) => {
+export const crearComentario = async (req, res) => {
     try {
         const data = req.body;
 
-        const publicacion = await Publicaciones.create(data);
+        const comentario = await Comentarios.create(data);
 
         return res.status(201).json({
-            message: "Publicación creada exitosamente",
-            publicacion
+            message: "Comentario creado exitosamente",
+            comentario
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Error al crear la publicación",
+            message: "Error al crear el comentario",
             error: error.message
         });
     }
 };
 
-export const listarPublicaciones = async (req, res) => {
+export const listarComentarios = async (req, res) => {
     try {
         const { limite = 5, desde = 0 } = req.query;
 
-        const [total, publicaciones] = await Promise.all([
-            Publicaciones.countDocuments(),
-            Publicaciones.find()
-                .skip(Number(desde)) 
-                .limit(Number(limite)) 
+        const [total, comentarios] = await Promise.all([
+            Comentarios.countDocuments(),
+            Comentarios.find()
+                .skip(Number(desde))
+                .limit(Number(limite))
         ]);
 
         return res.status(200).json({
             success: true,
-            total, 
-            publicaciones 
+            total,
+            comentarios
         });
     } catch (error) {
         return res.status(500).json({
-            message: "Error al listar las publicaciones",
+            message: "Error al listar los comentarios",
             error: error.message
         });
     }
