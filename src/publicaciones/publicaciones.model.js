@@ -13,6 +13,7 @@ const PublicacionesSchema = new mongoose.Schema({
   curso: {
     type: String,
     required: true,
+    enum: ['Taller', 'Practicas', 'Tecnologia']
   },
   fechaCreacion: {
     type: Date,

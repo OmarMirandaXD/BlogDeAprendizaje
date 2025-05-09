@@ -5,6 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
+import publicacionesRoutes from "../src/publicaciones/publicaciones.routes.js";
 import { fileURLToPath } from 'url';
 import { dbConnection } from "./mongo.js"; 
 import apiLimiter from "../src/middlewares/rate-limit-validator.js";
@@ -16,20 +17,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const middlewares = (app) => {
-    app.use(express.urlencoded({ extended: false }));
-    app.use(express.json());
-    app.use(cors());
-    app.use(helmet());
-    app.use(morgan("dev"));
-    app.use(apiLimiter);
-    app.use('/public', express.static(path.join(__dirname, 'public')));
-};
+    app.use(express.urlencoded({extended: false}))
+    app.use(express.json())
+    app.use(cors())
+    app.use(helmet())
+    app.use(morgan("dev"))
+    app.use(apiLimiter)
+}
 
 const conectarDB = async () => {
     try {
         await dbConnection();
-        await createDefaultAdmin();
-        await createDefaultCategoria(); 
     } catch (err) {
         console.log(`Database connection failed: ${err}`);
         process.exit(1);
@@ -37,8 +35,8 @@ const conectarDB = async () => {
 };
 
 const routes = (app) => {
-     
-}
+     app.use("/blog/publicaciones", publicacionesRoutes);
+};
 
 export const initServer = async () => {
     const app = express();
