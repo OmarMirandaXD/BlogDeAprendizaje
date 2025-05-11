@@ -2,29 +2,36 @@ import { Comentarios } from './comentarios.model.js';
 
 export const crearComentario = async (req, res) => {
     try {
-        const data = req.body;
+        const { autor, contenido, publicacion } = req.body;
 
-        const comentario = await Comentarios.create(data);
+if (!autor || !contenido || !publicacion) {
+  return res.status(400).json({ message: "Faltan datos requeridos" });
+}
 
-        return res.status(201).json({
-            message: "Comentario creado exitosamente",
-            comentario
-        });
+const comentario = await Comentarios.create({
+  autor,
+  contenido,
+  publicacion
+});  
+      return res.status(201).json(comentario); 
     } catch (error) {
-        return res.status(500).json({
-            message: "Error al crear el comentario",
-            error: error.message
-        });
+      console.error("Error al crear comentario:", error);
+      return res.status(500).json({
+        message: "Error interno al crear el comentario",
+        error: error.message,
+      });
     }
-};
+  };
+  
 
 export const listarComentarios = async (req, res) => {
     try {
-        const { limite = 5, desde = 0 } = req.query;
+        const { publicacionId } = req.params; 
+        const { limite = 100, desde = 0 } = req.query;
 
         const [total, comentarios] = await Promise.all([
-            Comentarios.countDocuments(),
-            Comentarios.find()
+            Comentarios.countDocuments({ publicacion: publicacionId }),
+            Comentarios.find({ publicacion: publicacionId })
                 .skip(Number(desde))
                 .limit(Number(limite))
         ]);

@@ -27,7 +27,7 @@ const PublicacionesSchema = new mongoose.Schema({
 
 PublicacionesSchema.methods.toJSON = function () {
     const { __status, _id, ...publicacion } = this.toObject();
-    publicacion.uid = _id;
+    publicacion._id = _id;
     return publicacion;
   };
 
