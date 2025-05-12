@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "fd5a210c-0753-4520-ab35-208eb934e689",
+		"name": "BlogDeAprendizaje",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38544544"
+	},
+	"item": [
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Crear Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Tarea De React\",\r\n  \"descripcion\": \"Tarea para Taller\",\r\n  \"curso\": \"Taller\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/blog/publicaciones/crearPublicacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"blog",
+								"publicaciones",
+								"crearPublicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Publicaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/blog/publicaciones/listarPublicaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"blog",
+								"publicaciones",
+								"listarPublicaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "Crear Comentario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/blog/comentarios/crearComentario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"blog",
+								"comentarios",
+								"crearComentario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Comentarios",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
