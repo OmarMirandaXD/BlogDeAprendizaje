@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "681d6e8a9bb02a86f51c27cc"
+  },
+  "titulo": "Tarea De React",
+  "descripcion": "Tarea para Taller",
+  "curso": "Taller",
+  "fechaCreacion": {
+    "$date": "2025-05-09T02:55:06.932Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682036acef4e4f382c7b8891"
+  },
+  "titulo": "Tarea De React",
+  "descripcion": "Tarea para Practicas",
+  "curso": "Practicas",
+  "fechaCreacion": {
+    "$date": "2025-05-11T05:33:32.779Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682036b3ef4e4f382c7b8893"
+  },
+  "titulo": "Tarea De React",
+  "descripcion": "Tarea para Tecnologia",
+  "curso": "Tecnologia",
+  "fechaCreacion": {
+    "$date": "2025-05-11T05:33:39.095Z"
+  },
+  "__v": 0
+}]
